@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Propinas y Consumos</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <header class="py-4 bg-primary">
+        <h1 class="text-center text-white fs-3">Calculadora de Consumos y Propinas</h1>
+    </header>
+
+    <!-- Button trigger modal -->
+    <div class="d-flex mt-4 justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formulario">
+            Nueva orden
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="formulario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="formularioLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formularioLabel">Restaurant App</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="mesa" class="form-label">Mesa</label>
+                            <input type="number" min="1" max="8" class="form-control" id="mesa">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora" class="form-label">Hora</label>
+                            <input type="time" class="form-control" id="hora">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Crear orden</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
