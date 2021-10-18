@@ -104,5 +104,30 @@ function mostrarPlatillos(platillos) {
 }
 
 function agregarPlatillo(producto) {
-    console.log(producto);
+    // Extraer el pedido actual
+    let { pedido } = cliente;
+    // Revisar que la cantidad sea mayor a 0
+    if (producto.cantidad > 0) {
+        const existeProducto = pedido.some(
+            (articulo) => articulo.id === producto.id
+        );
+        if (existeProducto) {
+            const pedidoActualizado = pedido.map((articulo) => {
+                if (articulo.id === producto.id) {
+                    articulo.cantidad = producto.cantidad;
+                }
+                return articulo;
+            });
+            cliente.pedido = [...pedidoActualizado];
+        } else {
+            cliente.pedido = [...pedido, producto];
+        }
+    } else {
+        const resultado = pedido.filter(
+            (articulo) => articulo.id !== producto.id
+        );
+        cliente.pedido = [...resultado];
+    }
+
+    
 }
