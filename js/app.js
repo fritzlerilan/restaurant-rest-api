@@ -131,11 +131,7 @@ function agregarPlatillo(producto) {
 
     limpiarContenidoResumen();
 
-    if (cliente.pedido.length) {
-        actualizarResumen();
-    } else {
-        mensajePedidoVacio();
-    }
+    setResume();
 }
 
 function actualizarResumen() {
@@ -246,7 +242,7 @@ function eliminarProducto(id) {
     cliente.pedido = [...actualizado];
 
     document.querySelector(`#producto-${id}`).value = 0;
-    actualizarResumen();
+    setResume();
 }
 
 function mensajePedidoVacio() {
@@ -255,4 +251,12 @@ function mensajePedidoVacio() {
     texto.textContent = "Añade los elementos del pedido";
 
     contenidoResumen.appendChild(texto);
+}
+
+function setResume() {
+    if (cliente.pedido.length) {
+        actualizarResumen();
+    } else {
+        mensajePedidoVacio();
+    }
 }
