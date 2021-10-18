@@ -136,7 +136,7 @@ function agregarPlatillo(producto) {
 
 function actualizarResumen() {
     const resumen = document.createElement("div");
-    resumen.classList.add("col-md-6", "card", "py-5", "px-3", "shadow");
+    resumen.classList.add("col-md-6", "card", "py-2", "px-3", "shadow");
 
     const mesa = document.createElement("p");
     mesa.textContent = "Mesa: ";
@@ -156,7 +156,7 @@ function actualizarResumen() {
 
     const heading = document.createElement("h3");
     heading.textContent = "Platillos consumidos";
-    heading.classList.add("py-4", "text-center");
+    heading.classList.add("my-4", "text-center");
 
     const grupo = document.createElement("ul");
     grupo.classList.add("list-group");
@@ -218,12 +218,14 @@ function actualizarResumen() {
     mesa.appendChild(mesaSpan);
     hora.appendChild(horaSpan);
 
+    resumen.appendChild(heading);
     resumen.appendChild(mesa);
     resumen.appendChild(hora);
-    resumen.appendChild(heading);
     resumen.appendChild(grupo);
 
     contenidoResumen.appendChild(resumen);
+
+    formularioPropinas();
 }
 
 function limpiarContenidoResumen() {
@@ -259,4 +261,49 @@ function setResume() {
     } else {
         mensajePedidoVacio();
     }
+}
+
+function formularioPropinas() {
+    const formulario = document.createElement("div");
+    formulario.classList.add("col-md-6", "formulario");
+
+    const divFormulario = document.createElement("div");
+    divFormulario.classList.add("card", "py-2", "shadow", "px-3");
+
+    const heading = document.createElement("h3");
+    heading.classList.add("my-4", "text-center");
+    heading.textContent = "Propina: ";
+
+    formulario.appendChild(divFormulario);
+
+    const radio10 = createRadioButtonPropina(10);
+    const radio20 = createRadioButtonPropina(25);
+    const radio30 = createRadioButtonPropina(50);
+
+
+    divFormulario.appendChild(heading);
+    divFormulario.appendChild(radio10);
+    divFormulario.appendChild(radio20);
+    divFormulario.appendChild(radio30);
+    contenidoResumen.appendChild(formulario);
+}
+
+function createRadioButtonPropina(porcentaje) {
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "propina";
+    radio.value = `${porcentaje}`;
+    radio.classList.add("form-check-input");
+
+    const radioLabel = document.createElement("label");
+    radioLabel.textContent = `${porcentaje}%`;
+    radioLabel.classList.add("form-check-label");
+
+    const radioDiv = document.createElement("div");
+    radioDiv.classList.add("form-check");
+
+    radioDiv.appendChild(radio);
+    radioDiv.appendChild(radioLabel);
+
+    return radioDiv;
 }
