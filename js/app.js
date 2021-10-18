@@ -31,18 +31,28 @@ function guardarCliente() {
         return;
     }
 
-    cliente = {...cliente, mesa, hora}
-    
-    //Ocultar modal
-    const modalFormulario = document.querySelector('#formulario')
-    const modalBootstrap = bootstrap.Modal.getInstance(modalFormulario)
-    modalBootstrap.hide()
+    cliente = { ...cliente, mesa, hora };
 
-    mostrarSecciones()
+    //Ocultar modal
+    const modalFormulario = document.querySelector("#formulario");
+    const modalBootstrap = bootstrap.Modal.getInstance(modalFormulario);
+    modalBootstrap.hide();
+
+    mostrarSecciones();
+    obtenerPlatillos();
 }
 
-
 function mostrarSecciones() {
-    const seccionesOcultas = document.querySelectorAll('.d-none')
-    seccionesOcultas.forEach(seccion => seccion.classList.remove('d-none'))
+    const seccionesOcultas = document.querySelectorAll(".d-none");
+    seccionesOcultas.forEach((seccion) => seccion.classList.remove("d-none"));
+}
+
+function obtenerPlatillos() {
+    const url = "http://localhost:3000/platillos";
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+            const mute = err;
+        });
 }
